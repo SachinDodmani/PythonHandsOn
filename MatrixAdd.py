@@ -2,12 +2,12 @@
 #  [4, 5, 6],
 #  [7, 8, 9]]
 
-def matrix(m,n):
+def matrix(m,n): # 3 * 3
     o = []
-    for i in range(m):
+    for i in range(m): #3
         row = []
-        for j in range(n):
-            inp = int(input(f" Enter o[{i}][{j}]"))
+        for j in range(n): #3
+            inp = int(input(f" Enter o[{i}][{j}]")) # i = 0 1 2 j = 0 1 2 3
             row.append(inp)
         o.append(row)
     return o
