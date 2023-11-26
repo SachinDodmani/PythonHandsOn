@@ -17,7 +17,7 @@ def sum(A,B):
     for i in range(len(A)): #Number of rows
         row = []
         for j in range(len(A[0])): #Num of columns
-            row.append(A[i][j] + B[i][j])
+            row.append(A[i][j] + B[i][j]) # Adding the two Matrix
         output.append(row)
     return output
 
