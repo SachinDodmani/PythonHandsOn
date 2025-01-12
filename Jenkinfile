@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main', url: 'https://github.com/SachinDodmani/PythonHandsOn.git'
+            }
+        }
+
+        stage('Transfer Files to EC2') {
+            steps {
+                sshagent(['773338c6-83bf-4f69-9717-5ad7227f41cc']) {
+                    sh """
+                        scp -o StrictHostKeyChecking=no -r * ubuntu@54.160.150.231:/var/www/html/
+                    """
+                }
+            }
+        }
+
+        stage('Restart Web Server') {
+            steps {
+                sshagent(['773338c6-83bf-4f69-9717-5ad7227f41cc']) {
+                    sh """
+                        ssh -o StrictHostKeyChecking=no ubuntu@54.160.150.231 "sudo systemctl restart apache2"
+                    """
+                }
+            }
+        }
+    }
+}
