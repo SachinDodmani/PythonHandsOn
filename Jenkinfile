@@ -12,7 +12,7 @@ pipeline {
             steps {
                 sshagent(['773338c6-83bf-4f69-9717-5ad7227f41cc']) {
                     sh """
-                        scp -o StrictHostKeyChecking=no -r * ubuntu@54.160.150.231:/var/www/html/
+                        scp -o StrictHostKeyChecking=no -r * ubuntu@34.203.34.141:/var/www/html/
                     """
                 }
             }
@@ -22,7 +22,7 @@ pipeline {
             steps {
                 sshagent(['773338c6-83bf-4f69-9717-5ad7227f41cc']) {
                     sh """
-                        ssh -o StrictHostKeyChecking=no ubuntu@54.160.150.231 "sudo systemctl restart apache2"
+                        ssh -o StrictHostKeyChecking=no ubuntu@34.203.34.141 "sudo systemctl restart apache2"
                     """
                 }
             }
